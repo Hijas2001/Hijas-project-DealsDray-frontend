@@ -1,10 +1,13 @@
 import React from 'react'
 import './Dashbord.css'
+import Navebar from '../../Component/Navebar/Navebar'
+import Dashbordbody from '../../Component/Dashbordbody/Dashbordbody'
 const Dashbord = () => {
   return (
     <div>
-    <h1>Welcome to the Dashboard</h1>
-  </div>
+      <Navebar></Navebar>
+      <Dashbordbody></Dashbordbody>
+    </div>
   )
 }
 
