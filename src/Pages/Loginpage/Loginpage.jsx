@@ -51,7 +51,7 @@ const Loginpage = () => {
 
     return (
 
-            <div className="login-container  min-h-screen flex items-center justify-center bg-gray-900">
+            <div className="login-container  min-h-screen  flex items-center justify-center ">
                 <div className="bg-white p-8 shadow-lg rounded-lg w-96">
                     <h2 className="text-2xl font-bold mb-4">Login</h2>
                     <form onSubmit={handleSubmit}>
