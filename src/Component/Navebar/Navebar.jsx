@@ -19,6 +19,9 @@ const Navbar = () => {
         // Redirect to login page
         window.location.href = '/';
     };
+    if (window.location.pathname === '/') {
+        return null;
+      }
 
     return (
 
