@@ -1,0 +1,50 @@
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.navbar {
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a, .navbar ul li button {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover, .navbar ul li button:hover {
+    background-color: #575757;
+    border-radius: 4px;
+}
+
+.navbar ul li button {
+    background-color: #ff4d4d;
+    border-radius: 4px;
+}
+
+.navbar ul li button:hover {
+    background-color: #cc0000;
+}
