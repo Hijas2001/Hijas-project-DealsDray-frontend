@@ -1,5 +1,4 @@
 import React from 'react'
-import './Updateemployee.css'
 
 const Updateemployee = () => {
   return (

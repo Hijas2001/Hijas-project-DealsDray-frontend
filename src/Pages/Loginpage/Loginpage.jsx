@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import './Loginpage.css';
 
 const Loginpage = () => {
     const [logindata, setLoginData] = useState({
