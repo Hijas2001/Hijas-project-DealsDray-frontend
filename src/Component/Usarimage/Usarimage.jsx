@@ -15,11 +15,27 @@ const Usarimage = () => {
       uploadBytes(imgRef, img).then((value) => {
         console.log(value);
         getDownloadURL(value.ref).then((url) => {
-          setImgUrl((data) => [...data, url]);
+          setImgUrl((data) =>[...data, url] );
         });
       });
     }
   };
+  console.log("last url",imgUrl);
+
+  // const lastimage = imgUrl[imgUrl.length - 1]
+  // console.log("image url", lastimage);
+  // // console.log(imgUrl[imgUrl.length-1]);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/auth/register", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-type": "application/json"
+  //     },
+  //     body: JSON.stringify({ img_URL: imgUrl })
+  //   })
+
+  // }, [imgUrl])
 
   useEffect(() => {
     listAll(ref(analytics, 'files')).then((imgs) => {
@@ -32,22 +48,10 @@ const Usarimage = () => {
     });
   }, []);
 
-  const lastimage = imgUrl[imgUrl.length - 1]
-  console.log("image url", lastimage);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/auth/register", {
-      method: "POST",
-      headers:{
-        "Content-type":"application/json"
-      },
-      body:JSON.stringify({ img_URL: lastimage })
-    })
-
-  },[lastimage])
 
   return (
-    <div className="flex -mb-12  items-center gap-5  bg-white  p-4">
+    <div className="flex -mb-12  items-center gap-5  bg-white  ">
       <input
         type="file"
         onChange={(e) => setImg(e.target.files[0])}
@@ -62,7 +66,7 @@ const Usarimage = () => {
       {imgUrl.length > 0 && (
         <div className="flex flex-col items-center">
           <img
-            src={imgUrl[imgUrl.length - 1]}
+            src={imgUrl[imgUrl.length-1]}
             alt="Uploaded"
             className="h-36 p-1 w-32 object-cover rounded"
           />

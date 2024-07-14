@@ -232,13 +232,182 @@
 // export default Createemployee
 
 
-import React from 'react'
+import React, { useState } from 'react'
 import Usarimage from '../../Component/Usarimage/Usarimage'
 
 const Createemployee = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    mobile: '',
+    designation: '',
+    gender: '',
+    courses: []
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      setFormData((prevState) => ({
+        ...prevState,
+        courses: checked
+          ? [...prevState.courses, value]
+          : prevState.courses.filter((course) => course !== value)
+      }));
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+  
   return (
-    <div>
-      <Usarimage></Usarimage>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
+      >
+        <h2 className="text-2xl font-bold mb-6">Registration Form</h2>
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-gray-700">
+            Name:
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-gray-700">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="mobile" className="block text-gray-700">
+            Mobile No:
+          </label>
+          <input
+            type="text"
+            id="mobile"
+            name="mobile"
+            value={formData.mobile}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="designation" className="block text-gray-700">
+            Designation:
+          </label>
+          <select
+            id="designation"
+            name="designation"
+            value={formData.designation}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+          >
+            <option value="">Select</option>
+            <option value="Manager">Manager</option>
+            <option value="Developer">Developer</option>
+            <option value="Designer">Designer</option>
+            <option value="Tester">Tester</option>
+          </select>
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700">Gender:</label>
+          <div className="mt-1">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="gender"
+                value="Male"
+                checked={formData.gender === 'Male'}
+                onChange={handleChange}
+                className="form-radio"
+              />
+              <span className="ml-2">Male</span>
+            </label>
+            <label className="inline-flex items-center ml-4">
+              <input
+                type="radio"
+                name="gender"
+                value="Female"
+                checked={formData.gender === 'Female'}
+                onChange={handleChange}
+                className="form-radio"
+              />
+              <span className="ml-2">Female</span>
+            </label>
+          </div>
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700">Course:</label>
+          <div className="mt-1">
+            <label className="inline-flex items-center">
+              <input
+                type="checkbox"
+                name="courses"
+                value="React"
+                checked={formData.courses.includes('React')}
+                onChange={handleChange}
+                className="form-checkbox"
+              />
+              <span className="ml-2">React</span>
+            </label>
+            <label className="inline-flex items-center ml-4">
+              <input
+                type="checkbox"
+                name="courses"
+                value="Node.js"
+                checked={formData.courses.includes('Node.js')}
+                onChange={handleChange}
+                className="form-checkbox"
+              />
+              <span className="ml-2">Node.js</span>
+            </label>
+            <label className="inline-flex items-center ml-4">
+              <input
+                type="checkbox"
+                name="courses"
+                value="Python"
+                checked={formData.courses.includes('Python')}
+                onChange={handleChange}
+                className="form-checkbox"
+              />
+              <span className="ml-2">Python</span>
+            </label>
+          </div>
+        </div>
+
+  
+          <Usarimage></Usarimage>
+      
+
+        <button
+          type="submit"
+          className="w-full mt-16 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring"
+        >
+          Submit
+        </button>
+      </form>
     </div>
   )
 }

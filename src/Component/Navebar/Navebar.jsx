@@ -26,7 +26,7 @@ const Navbar = () => {
     return (
 
         <div className="container mx-auto">
-          <nav className="flex items-center justify-between py-4">
+          <nav className="flex items-center justify-between ">
             <div className="flex items-center">
               <h1 className="text-white text-xl font-bold">Logo</h1>
             </div>
